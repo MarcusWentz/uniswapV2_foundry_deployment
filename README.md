@@ -8,7 +8,9 @@
 forge create --constructor-args <feeToSetter> --legacy --rpc-url <rprUrl> --private-key $devTestnetPrivateKey src/UniswapV2Factory.sol:UniswapV2Factory 
 ```
 
-2. Update library inside Router INIT_CODE_HASH on line 704 in this format https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Router02.sol#L704 
+2. Update library inside Router INIT_CODE_HASH on line 704 in this format:
+
+https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Router02.sol#L704 
 
 ⚠️ Do not use this exact value unless it matches your new INIT_CODE_HASH ⚠️
 
