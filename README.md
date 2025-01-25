@@ -64,4 +64,4 @@ https://sepolia.basescan.org/address/0xaec91b299dc7b7001e32112f2a72a3a51f3b9303
 
 UniswapV2Router02:
 
-https://sepolia.basescan.org/address/0xa81d90ba4f4051277c64ffad9eeffab87c4035b1
+https://sepolia.basescan.org/address/0x794c842Ef3EE218464068F0FFC4Bc084453CDeDD
