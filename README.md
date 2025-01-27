@@ -2,11 +2,9 @@
 
 ## Deploy
 
-### Step 1: Deploy UniswapV2Factory
+### Step 1: Prepare UniswapV2Factory
 
-🔴  Warning: Add the INIT_CODE_HASH public variable which is used for UniswapV2Router02 deployment later.
-
-Added already in this repo like this:
+ℹ️ Note: The INIT_CODE_HASH public variable which is used for UniswapV2Router02 deployment later.
 
 ```solidity
 bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(UniswapV2Pair).creationCode));
@@ -16,11 +14,15 @@ at this line:
 
 https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Factory.sol#L405
 
-🔴
+🔴 Warning: if the INIT_CODE_HASH is not setup correctly between UniswapV2Factory and UniswapV2Router02, certain transactions will revert:
 
-⚠️  Caution: the constructor arguments set in a text file to avoid forge compilation issues. ⚠️ 
+https://ethereum.stackexchange.com/questions/88075/uniswap-addliquidity-function-transaction-revert/94852#94852
 
-ℹ️  Note: this example sets feeToSetter to 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 (vitalik.eth). ℹ️
+⚠️  Caution: the constructor arguments set in a text file to avoid forge compilation issues. 
+
+ℹ️  Note: this example sets feeToSetter to 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 (vitalik.eth).
+
+### Step 2: Deploy UniswapV2Factory
 
 ```shell
 forge create src/UniswapV2Factory.sol:UniswapV2Factory  \
@@ -32,13 +34,13 @@ forge create src/UniswapV2Factory.sol:UniswapV2Factory  \
 --verify 
 ```
 
-### Step 2: Update UniswapV2Router02 value INIT_CODE_HASH before deploying
+### Step 3: Update UniswapV2Router02 value INIT_CODE_HASH before deploying
 
-2. Update library inside Router INIT_CODE_HASH on line 704 in this format:
+Update library inside Router INIT_CODE_HASH on line 704 in this format:
 
 https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Router02.sol#L704 
 
-⚠️ Do not use this exact value unless it matches your new INIT_CODE_HASH ⚠️
+🔴 Warning: Do not use this exact value unless it matches your new INIT_CODE_HASH 
 
 ```solidity
 hex'295e81838c52ea539beeced4b28b067224b25534c7f513a6ee295364a9d3fe0d' // init code hash
@@ -58,7 +60,7 @@ forge create src/UniswapV2Router02.sol:UniswapV2Router02 \
 
 ## Sepolia Verified Deployments:
 
-Note: this example from the deployed address for UniswapV2Factory INIT_CODE_HASH is :
+ℹ️ Note: this example from the deployed address for UniswapV2Factory INIT_CODE_HASH is :
 
 ```solidity
 hex'f5cf876c1910617ea1749e7346a0c71cf8d678a08fc2fb10ae44fded41499415' // init code hash
