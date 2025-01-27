@@ -47,7 +47,7 @@ hex'295e81838c52ea539beeced4b28b067224b25534c7f513a6ee295364a9d3fe0d' // init co
 
 https://ethereum.stackexchange.com/questions/88075/uniswap-addliquidity-function-transaction-revert/94852#94852
 
-### Step 3: Deploy UniswapV2Router02:
+### Step 4: Deploy UniswapV2Router02:
 
 ```shell
 forge create src/UniswapV2Router02.sol:UniswapV2Router02 \
@@ -58,6 +58,10 @@ forge create src/UniswapV2Router02.sol:UniswapV2Router02 \
 --broadcast \
 --verify 
 ```
+
+## Debugging Resource:
+
+https://github.com/shardeum/bug-reporting/issues/263#issuecomment-1495059281
 
 ## Sepolia Verified Deployments:
 
