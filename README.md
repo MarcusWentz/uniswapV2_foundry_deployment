@@ -2,11 +2,25 @@
 
 ## Deploy
 
-1. Deploy UniswapV2Factory with INIT_CODE_HASH public variable (added already).
+### Step 1: Deploy UniswapV2Factory
 
-⚠️  Note: the constructor arguments set in a text file to avoid forge compilation issues. ⚠️ 
+🔴  Warning: Add the INIT_CODE_HASH public variable which is used for UniswapV2Router02 deployment later.
 
-⚠️  Note: this example sets feeToSetter to 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 (vitalik.eth). ⚠️ 
+Added already in this repo like this:
+
+```solidity
+bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(UniswapV2Pair).creationCode));
+```
+
+at this line:
+
+https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Factory.sol#L405
+
+🔴
+
+⚠️  Caution: the constructor arguments set in a text file to avoid forge compilation issues. ⚠️ 
+
+ℹ️  Note: this example sets feeToSetter to 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 (vitalik.eth). ℹ️
 
 ```shell
 forge create src/UniswapV2Factory.sol:UniswapV2Factory  \
@@ -18,6 +32,8 @@ forge create src/UniswapV2Factory.sol:UniswapV2Factory  \
 --verify 
 ```
 
+### Step 2: Update UniswapV2Router02 value INIT_CODE_HASH before deploying
+
 2. Update library inside Router INIT_CODE_HASH on line 704 in this format:
 
 https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Router02.sol#L704 
@@ -28,7 +44,7 @@ https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/Uniswa
 hex'295e81838c52ea539beeced4b28b067224b25534c7f513a6ee295364a9d3fe0d' // init code hash
 ```
 
-3. Deploy UniswapV2Router02:
+### Step 3: Deploy UniswapV2Router02:
 
 ```shell
 forge create src/UniswapV2Router02.sol:UniswapV2Router02 \
