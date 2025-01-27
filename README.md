@@ -43,7 +43,7 @@ https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/Uniswa
 hex'295e81838c52ea539beeced4b28b067224b25534c7f513a6ee295364a9d3fe0d' // init code hash
 ```
 
-🔴 Warning: if the INIT_CODE_HASH is not setup correctly between UniswapV2Factory and UniswapV2Router02, certain transactions will revert:
+🔴 Warning: if the INIT_CODE_HASH set in UniswapV2Router02 does not match the INIT_CODE_HASH in UniswapV2Factory, certain transactions will revert:
 
 https://ethereum.stackexchange.com/questions/88075/uniswap-addliquidity-function-transaction-revert/94852#94852
 
