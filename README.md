@@ -4,19 +4,15 @@
 
 ### Step 1: Prepare UniswapV2Factory
 
-ℹ️ Note: The INIT_CODE_HASH public variable which is used for UniswapV2Router02 deployment later.
+ℹ️ Note: The INIT_CODE_HASH public variable:
 
 ```solidity
 bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(UniswapV2Pair).creationCode));
 ```
 
-at this line:
+has been added to simplify UniswapV2Router02 deployment later. INIT_CODE_PAIR_HASH is added to UniswapV2Factory here:
 
 https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Factory.sol#L405
-
-🔴 Warning: if the INIT_CODE_HASH is not setup correctly between UniswapV2Factory and UniswapV2Router02, certain transactions will revert:
-
-https://ethereum.stackexchange.com/questions/88075/uniswap-addliquidity-function-transaction-revert/94852#94852
 
 ⚠️  Caution: the constructor arguments set in a text file to avoid forge compilation issues. 
 
@@ -40,11 +36,16 @@ Update library inside Router INIT_CODE_HASH on line 704 in this format:
 
 https://github.com/MarcusWentz/uniswapV2_foundry_deployment/blob/main/src/UniswapV2Router02.sol#L704 
 
-🔴 Warning: Do not use this exact value unless it matches your new INIT_CODE_HASH 
+
+🔴 Warning: Do not use this exact INIT_CODE_HASH in UniswapV2Router02 unless it matches your new INIT_CODE_HASH deployed from UniswapV2Factory
 
 ```solidity
 hex'295e81838c52ea539beeced4b28b067224b25534c7f513a6ee295364a9d3fe0d' // init code hash
 ```
+
+🔴 Warning: if the INIT_CODE_HASH is not setup correctly between UniswapV2Factory and UniswapV2Router02, certain transactions will revert:
+
+https://ethereum.stackexchange.com/questions/88075/uniswap-addliquidity-function-transaction-revert/94852#94852
 
 ### Step 3: Deploy UniswapV2Router02:
 
