@@ -116,3 +116,13 @@ https://sepolia.basescan.org/address/0xaec91b299dc7b7001e32112f2a72a3a51f3b9303
 UniswapV2Router02:
 
 https://sepolia.basescan.org/address/0x794c842Ef3EE218464068F0FFC4Bc084453CDeDD
+
+## Fluent DevNet Verified Deployments:
+
+UniswapV2Factory:
+
+https://blockscout.dev.gblend.xyz/address/0x886A2bc0507C29A3685980d3E02BE8f07A94f903?tab=contract
+
+UniswapV2Router02:
+
+https://blockscout.dev.gblend.xyz/address/0xE00fAe47783A593f3975A13Dec9D957A437d1118?tab=contract
