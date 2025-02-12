@@ -69,6 +69,24 @@ src/UniswapV2Pair.sol:UniswapV2Pair \
 --etherscan-api-key $basescanApiKey  
 ```
 
+## Foundry Fork Test addLiquidityEth
+
+🔴 Warning: make sure you approve enough tokens for allowance to avoid ERC-20 `transferFrom()` errors. 
+
+🔴 Warning: make sure you supply enough liquidity amounts to avoid error `ds-math-sub-underflow':
+
+https://ethereum.stackexchange.com/a/130087
+
+`MINIMUM_LIQUIDITY` for minting Uniswap V2 LP tokens is generally 1000 wei:
+
+https://docs.uniswap.org/contracts/v2/reference/smart-contracts/pair#minimum_liquidity
+
+```shell
+forge test \
+--fork-url $baseSepoliaHTTPS \
+--match-test testAddLiquidityEth
+```
+
 ## Debugging Resource:
 
 https://github.com/shardeum/bug-reporting/issues/263#issuecomment-1495059281
