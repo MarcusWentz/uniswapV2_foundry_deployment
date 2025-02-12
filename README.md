@@ -59,6 +59,16 @@ forge create src/UniswapV2Router02.sol:UniswapV2Router02 \
 --verify 
 ```
 
+### Step 5 (Optional): Verify UniswapV2Pair (ERC-20 LP token deployed from UniswapV2Factory): 
+
+```shell
+forge verify-contract \
+--rpc-url $baseSepoliaHTTPS \
+<contract_address> \
+src/UniswapV2Pair.sol:UniswapV2Pair \
+--etherscan-api-key $basescanApiKey  
+```
+
 ## Debugging Resource:
 
 https://github.com/shardeum/bug-reporting/issues/263#issuecomment-1495059281
